@@ -1,0 +1,93 @@
+<p>calculadora works!</p>
+<!--
+
+<p>Num1:</p>
+<input type="number" (keyup)="getNum1($event)" >
+
+<p>Num2:</p>
+<input type="number" (keyup)="getNum2($event)" >
+<input type="button" value="Sumar" (click)="operar('+')" >
+<input type="button" value="Resta" (click)="operar('-')" >
+<input type="button" value="Multiplicar" (click)="operar('*')" >
+<input type="button" value="Dividir" (click)="operar('/')" >
+@if (visible) {
+  <p>Num1:{{num1}}  {{oper}}  Num2:{{num2}}  Resultado:  {{result}}</p>
+}
+
+-->
+<!--
+<p>Num1:</p>
+<input type="number" [(ngModel)]="num1"  >
+<p>Num2:</p>
+<input type="number" [(ngModel)]="num2"  >
+
+<input type="button" value="Sumar" (click)="operar('+')" >
+<input type="button" value="Resta" (click)="operar('-')" >
+<input type="button" value="Multiplicar" (click)="operar('*')" >
+<input type="button" value="Dividir" (click)="operar('/')" >
+@if (visible) {
+  <p>Num1:{{num1}}  {{oper}}  Num2:{{num2}}  Resultado:  {{result}}</p>
+}
+-->
+<!--
+<div id="calculadora">
+  <div class="pantalla">
+    <input  type="text" [(ngModel)]="pantalla"  disabled >
+  </div>
+  <div class="botones">
+    <button (click)="precionarBoton('7')" >7</button>
+    <button (click)="precionarBoton('8')" >8</button>
+    <button (click)="precionarBoton('9')" >9</button>
+    <button (click)="precionarBoton('/')" >/</button>
+
+    <button (click)="precionarBoton('4')" >4</button>
+    <button (click)="precionarBoton('5')" >5</button>
+    <button (click)="precionarBoton('6')" >6</button>
+    <button (click)="precionarBoton('*')" >*</button>
+
+    <button (click)="precionarBoton('1')" >1</button>
+    <button (click)="precionarBoton('2')" >2</button>
+    <button (click)="precionarBoton('3')" >3</button>
+    <button (click)="precionarBoton('+')" >+</button>
+
+    <button (click)="precionarBoton('0')" >0</button>
+    <button (click)="precionarBoton('=')" >=</button>
+    <button (click)="precionarBoton('.')" >.</button>
+    <button (click)="precionarBoton('-')" >-</button>
+
+    <button (click)="precionarBoton('AC')" class="clear" >AC</button>
+  </div>
+</div>
+-->
+
+
+<!-- con Material -->
+
+<mat-card class="calculadora">
+  <mat-card-content>
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <input matInput type="text" [(ngModel)]="pantalla" disabled>
+    </mat-form-field>
+
+    <div class="botones">
+      <button
+        mat-raised-button
+        *ngFor="let boton of bottons"
+        (click)="precionarBoton(boton)"
+        [ngClass]="{
+          'clear': boton === 'AC',
+          'igual': boton === '=',
+          'operador': ['+', '-', '*', '/'].includes(boton)
+        }"
+        color="primary"
+        [attr.aria-label]="'Botón ' + boton"
+      >
+        {{ boton }}
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
+
+
